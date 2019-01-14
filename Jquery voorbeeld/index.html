@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue Workshop</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="normalizer.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <header class="header">
+        <h1>Shoppinglist</h1>
+        <input type="text" onkeyup="showSearchResult()" class="search-box" placeholder="Search...">
+    </header>
+    <main>
+        <div class="card-group">
+            <div class="card-item">
+                <span><input class="new-name" type="text" placeholder="New item..."></span>
+                <span><input class="new-quantity" type="number" placeholder="Quantity..."></span>
+                <span><button onclick="addItem()">Add item</button></span>
+            </div>
+        </div>
+    </main>
+</div>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>

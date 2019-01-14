@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue Workshop</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="normalizer.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <header class="header">
+        <h1>Shoppinglist</h1>
+        <input type="text" v-model="searchWord" class="search-box" placeholder="Search...">
+    </header>
+    <main>
+        <div class="card-group">
+            <div class="card-item">
+                <span><input v-model="newItemName" type="text" placeholder="New item..."></span>
+                <span><input v-model="newItemQuantity" type="number" placeholder="Quantity..."></span>
+                <span><button v-on:click="addItem()">Add item</button></span>
+            </div>
+            <div v-for="item in filteredItems" class="card-item">
+                <label
+                        v-if="item.editMode === false"
+                        class="card-item-name"
+                        v-bind:class="{striked: item.purchased}"
+                        v-on:click="toggleEditMode(item)"
+                >{{ item.name }}</label>
+                <input
+                        type="text"
+                        class="card-item-edit"
+                        autofocus
+                        v-else
+                        v-model="item.name"
+                        v-on:keydown.enter="toggleEditMode(item)"
+                >
+                <label v-bind:class="{striked : item.purchased}">{{ item.quantity }}</label>
+                <span><input v-bind="{checked : item.purchased}" v-on:change="togglePurchased(item)" type="checkbox"></span>
+            </div>
+        </div>
+    </main>
+</div>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
